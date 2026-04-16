@@ -19,7 +19,7 @@ export default function Home() {
 
             <main className="relative z-10 w-full overflow-hidden">
                 <Hero />
-                <div className="relative w-full overflow-hidden bg-black/40 backdrop-blur-sm border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
+                <div className="relative w-full overflow-hidden bg-[#03050a]/95 border-t border-white/5 shadow-[0_-20px_50px_rgba(0,0,0,0.8)]">
                     <Mission />
                     <Features />
                     <TargetProperties />

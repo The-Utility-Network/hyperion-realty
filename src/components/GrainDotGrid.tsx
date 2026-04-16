@@ -41,6 +41,9 @@ export default function GrainDotGrid() {
             const offsetX = (time * 0.5) % spacing;
             const offsetY = (time * 0.25) % spacing;
 
+            ctx.globalAlpha = 0.5;
+            ctx.beginPath();
+
             for (let x = -spacing; x < width + spacing; x += spacing) {
                 for (let y = -spacing; y < height + spacing; y += spacing) {
                     
@@ -48,20 +51,15 @@ export default function GrainDotGrid() {
                     const waveX = Math.sin((y + time * 20) * 0.005) * 5;
                     const waveY = Math.cos((x + time * 15) * 0.005) * 5;
                     
-                    // Fade out near edges
-                    const distToCenter = Math.hypot(x - width/2, y - height/2);
-                    const maxDist = Math.max(width, height) / 1.5;
-                    const opacity = Math.max(0, 1 - distToCenter / maxDist);
-                    
-                    ctx.globalAlpha = opacity * 0.5;
+                    const drawX = x + offsetX + waveX;
+                    const drawY = y + offsetY + waveY;
 
-                    ctx.beginPath();
-                    ctx.arc(x + offsetX + waveX, y + offsetY + waveY, dotSize, 0, Math.PI * 2);
-                    ctx.fill();
+                    ctx.moveTo(drawX + dotSize, drawY);
+                    ctx.arc(drawX, drawY, dotSize, 0, Math.PI * 2);
                 }
             }
             
-            ctx.globalAlpha = 1;
+            ctx.fill();
 
             time++;
             animationFrameId = requestAnimationFrame(draw);
@@ -79,7 +77,11 @@ export default function GrainDotGrid() {
         <canvas
             ref={canvasRef}
             className="grain-bg"
-            style={{ opacity: 0.6 }}
+            style={{ 
+                opacity: 0.6,
+                WebkitMaskImage: 'radial-gradient(circle at center, black 20%, transparent 80%)',
+                maskImage: 'radial-gradient(circle at center, black 20%, transparent 80%)'
+            }}
         />
     );
 }
