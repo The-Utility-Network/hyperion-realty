@@ -12,7 +12,7 @@ const Globe = dynamic(() => import('react-globe.gl'), {
 });
 
 export default function GlobeMap({ activeRegion, hoveredCity }: { activeRegion: string | null, hoveredCity: string | null }) {
-    const globeEl = useRef<any>();
+    const globeEl = useRef<any>(null);
     const router = useRouter();
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
     const containerRef = useRef<HTMLDivElement>(null);
