@@ -126,12 +126,12 @@ export default function GlobeMap({ activeRegion, hoveredCity }: { activeRegion: 
                         </div>
                     `}
                     
-                    // Rings around ALL active targets to make them extremely visible
-                    ringsData={gData}
-                    ringColor={(d: any) => hoveredCity === d.slug ? '#ffffff' : '#d4af37'}
-                    ringMaxRadius={(d: any) => hoveredCity === d.slug ? 6 : 3}
+                    // Rings around active/hovered points only (Major Performance optimization)
+                    ringsData={gData.filter(d => hoveredCity === d.slug)}
+                    ringColor={() => '#ffffff'}
+                    ringMaxRadius={6}
                     ringPropagationSpeed={1.5}
-                    ringRepeatPeriod={(d: any) => hoveredCity === d.slug ? 400 : 1200}
+                    ringRepeatPeriod={400}
                 />
             )}
         </div>

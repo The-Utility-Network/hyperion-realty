@@ -56,12 +56,15 @@ export default function TokenizationPipeline() {
                 </div>
 
                 {/* Hybrid 3D/2D Container */}
-                <div className="relative w-full max-w-5xl mx-auto flex items-center justify-center h-[500px]">
+                <div className="relative w-full max-w-5xl mx-auto flex flex-col items-center justify-center h-[300px] sm:h-[400px] lg:h-[500px]">
                     
-                    {/* Layer 1: The 3D Isometric Grid (Deep Z-Index) */}
-                    <div className="absolute inset-0 flex items-center justify-center perspective-[1200px] pointer-events-none z-10">
-                        <motion.div 
-                            className="relative w-[800px] h-[800px]"
+                    {/* Scaling Wrapper for Mobile */}
+                    <div className="absolute flex items-center justify-center transform origin-center scale-[0.35] sm:scale-[0.55] md:scale-75 lg:scale-100 pointer-events-none -mt-10 lg:mt-0">
+                        
+                        {/* Layer 1: The 3D Isometric Grid (Deep Z-Index) */}
+                        <div className="absolute flex items-center justify-center perspective-[1200px] pointer-events-none z-10 w-[800px] h-[800px]">
+                            <motion.div 
+                                className="relative w-full h-full"
                             style={{ 
                                 transform: "rotateX(55deg) rotateZ(45deg)",
                                 transformStyle: "preserve-3d" 
@@ -88,7 +91,6 @@ export default function TokenizationPipeline() {
                                         opacity: [0, 1, 1, 0] 
                                     }}
                                     transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                                    className="drop-shadow-[0_0_12px_rgba(212,175,55,1)]"
                                 />
 
                                 {/* Backward Pulse: Trading Taxes -> Upgrade Physical Asset (Green) */}
@@ -102,7 +104,6 @@ export default function TokenizationPipeline() {
                                         opacity: [0, 1, 1, 0] 
                                     }}
                                     transition={{ duration: 3.5, delay: 1.5, repeat: Infinity, ease: "linear" }}
-                                    className="drop-shadow-[0_0_12px_rgba(34,197,94,1)]"
                                 />
                             </svg>
 
@@ -119,9 +120,9 @@ export default function TokenizationPipeline() {
                                         transformStyle: "preserve-3d" 
                                     }}
                                 >
-                                    {/* Glass Pad */}
+                                    {/* Solid Pad Without Expensive Render Blur */}
                                     <motion.div 
-                                        className="absolute inset-0 border border-hr-gold/50 bg-[#0a1122]/60 backdrop-blur-md rounded-2xl shadow-[inset_0_0_20px_rgba(212,175,55,0.1),_0_0_40px_rgba(212,175,55,0.15)]"
+                                        className="absolute inset-0 border border-hr-gold/50 bg-[#0a1122]/90 rounded-2xl shadow-[inset_0_0_20px_rgba(212,175,55,0.1),_0_0_40px_rgba(212,175,55,0.15)]"
                                         animate={{ z: [0, 20, 0] }}
                                         transition={{ duration: 4, delay: node.delay, repeat: Infinity, ease: "easeInOut" }}
                                         style={{ transformStyle: "preserve-3d" }}
@@ -131,14 +132,14 @@ export default function TokenizationPipeline() {
                                 </div>
                             ))}
                         </motion.div>
-                    </div>
-
-                    {/* Layer 2: The 2D UI Overlay (High Z-Index, Crisp Typography) */}
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-30">
-                        {nodes.map((node) => (
-                            <div 
-                                key={`ui-wrapper-${node.id}`}
-                                className="absolute"
+                        </div>
+                        
+                        {/* Layer 2: The 2D UI Overlay (High Z-Index, Crisp Typography) */}
+                        <div className="absolute flex items-center justify-center pointer-events-none z-30 w-[800px] h-[800px]">
+                            {nodes.map((node) => (
+                                <div 
+                                    key={`ui-wrapper-${node.id}`}
+                                    className="absolute"
                                 style={{ transform: `translate(${node.offset2d}px, 0)` }}
                             >
                                 <motion.div
@@ -155,19 +156,20 @@ export default function TokenizationPipeline() {
                                         </div>
                                         
                                         {/* High Fidelity Typography Block */}
-                                        <div className="bg-[#050914]/90 backdrop-blur-xl border border-hr-gold/20 px-5 py-3 rounded-lg text-center shadow-[0_15px_30px_rgba(0,0,0,0.8)] group-hover:border-hr-gold/50 transition-colors">
+                                        <div className="bg-[#050914] border border-hr-gold/20 px-5 py-3 rounded-lg text-center shadow-[0_15px_30px_rgba(0,0,0,0.8)] group-hover:border-hr-gold/50 transition-colors">
                                             <div className="text-[11px] font-bold tracking-[0.2em] mb-1" style={{ color: node.color }}>{node.title}</div>
                                             <div className="text-[12px] text-white/50 font-light tracking-wide">{node.desc}</div>
                                         </div>
                                     </div>
                                 </motion.div>
-                            </div>
-                        ))}
+                                </div>
+                            ))}
+                        </div>
                     </div>
 
                     {/* Legend Overlay */}
-                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-40">
-                        <div className="bg-[#050914]/90 backdrop-blur-xl px-6 py-4 border border-white/10 rounded-lg flex gap-8 shadow-2xl">
+                    <div className="absolute -bottom-8 md:bottom-4 left-1/2 -translate-x-1/2 z-40 w-full px-4 md:w-auto">
+                        <div className="bg-[#050914]/90 backdrop-blur-xl px-4 py-3 md:px-6 md:py-4 border border-white/10 rounded-lg flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 shadow-2xl">
                             <div className="flex items-center gap-3">
                                 <div className="w-4 h-1 bg-hr-gold shadow-[0_0_8px_#d4af37]" />
                                 <span className="text-[10px] font-mono text-white/80 uppercase tracking-[0.15em]">Yield Distribution</span>
