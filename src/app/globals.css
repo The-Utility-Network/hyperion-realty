@@ -164,6 +164,40 @@ body {
   animation: float 6s ease-in-out infinite;
 }
 
+@keyframes flow-forward {
+  0% { stroke-dasharray: 0 1000; stroke-dashoffset: 0; opacity: 0; }
+  10% { opacity: 1; }
+  50% { stroke-dasharray: 250 1000; stroke-dashoffset: -750; opacity: 1; }
+  60% { opacity: 0; }
+  100% { stroke-dasharray: 0 1000; stroke-dashoffset: -1000; opacity: 0; }
+}
+
+@keyframes flow-backward {
+  0% { stroke-dasharray: 0 1000; stroke-dashoffset: 0; opacity: 0; }
+  10% { opacity: 1; }
+  50% { stroke-dasharray: 250 1000; stroke-dashoffset: -750; opacity: 1; }
+  60% { opacity: 0; }
+  100% { stroke-dasharray: 0 1000; stroke-dashoffset: -1000; opacity: 0; }
+}
+
+@keyframes pad-bounce {
+  0%, 100% { transform: translateZ(0px); }
+  50% { transform: translateZ(20px); }
+}
+
+.animate-flow-gold {
+  animation: flow-forward 3s linear infinite;
+}
+
+.animate-flow-green {
+  animation: flow-backward 3.5s linear infinite;
+  animation-delay: 1.5s;
+}
+
+.animate-pad {
+  animation: pad-bounce 4s ease-in-out infinite;
+}
+
 /* Stagger animations */
 .stagger-1 {
   animation-delay: 0.1s;

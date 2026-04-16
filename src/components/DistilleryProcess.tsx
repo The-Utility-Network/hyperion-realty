@@ -81,29 +81,17 @@ export default function TokenizationPipeline() {
                                 <path d="M200 600 L400 400 L600 200" fill="none" stroke="#d4af37" strokeWidth="2" strokeOpacity={0.2} strokeDasharray="6 6"/>
                                 
                                 {/* Forward Pulse: Asset -> ERC20 Yields (Gold) */}
-                                <motion.path 
+                                <path 
                                     d="M200 600 L400 400 L600 200" 
                                     fill="none" stroke="#d4af37" strokeWidth="6" strokeLinecap="round"
-                                    initial={{ pathLength: 0, pathOffset: 0, opacity: 0 }}
-                                    animate={{ 
-                                        pathLength: [0, 0.25, 0.25, 0], 
-                                        pathOffset: [0, 0, 0.75, 1], 
-                                        opacity: [0, 1, 1, 0] 
-                                    }}
-                                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                                    className="animate-flow-gold"
                                 />
 
                                 {/* Backward Pulse: Trading Taxes -> Upgrade Physical Asset (Green) */}
-                                <motion.path 
+                                <path 
                                     d="M600 200 L400 400 L200 600" 
                                     fill="none" stroke="#22c55e" strokeWidth="6" strokeLinecap="round"
-                                    initial={{ pathLength: 0, pathOffset: 0, opacity: 0 }}
-                                    animate={{ 
-                                        pathLength: [0, 0.25, 0.25, 0], 
-                                        pathOffset: [0, 0, 0.75, 1], 
-                                        opacity: [0, 1, 1, 0] 
-                                    }}
-                                    transition={{ duration: 3.5, delay: 1.5, repeat: Infinity, ease: "linear" }}
+                                    className="animate-flow-green"
                                 />
                             </svg>
 
@@ -121,14 +109,12 @@ export default function TokenizationPipeline() {
                                     }}
                                 >
                                     {/* Solid Pad Without Expensive Render Blur */}
-                                    <motion.div 
-                                        className="absolute inset-0 border border-hr-gold/50 bg-[#0a1122]/90 rounded-2xl shadow-[inset_0_0_20px_rgba(212,175,55,0.1),_0_0_40px_rgba(212,175,55,0.15)]"
-                                        animate={{ z: [0, 20, 0] }}
-                                        transition={{ duration: 4, delay: node.delay, repeat: Infinity, ease: "easeInOut" }}
-                                        style={{ transformStyle: "preserve-3d" }}
+                                    <div 
+                                        className="absolute inset-0 border border-hr-gold/50 bg-[#0a1122]/90 rounded-2xl shadow-[inset_0_0_20px_rgba(212,175,55,0.1),_0_0_40px_rgba(212,175,55,0.15)] animate-pad"
+                                        style={{ transformStyle: "preserve-3d", animationDelay: `${node.delay}s` }}
                                     >
                                         <div className="absolute inset-2 border border-hr-gold/20 rounded-xl bg-hr-gold/5" />
-                                    </motion.div>
+                                    </div>
                                 </div>
                             ))}
                         </motion.div>
@@ -142,11 +128,10 @@ export default function TokenizationPipeline() {
                                     className="absolute"
                                 style={{ transform: `translate(${node.offset2d}px, 0)` }}
                             >
-                                <motion.div
+                                <div
                                     key={`ui-${node.id}`}
-                                    className="flex flex-col items-center justify-center pointer-events-auto"
-                                    animate={{ y: [-20, -36, -20] }} // 16px perfectly matches the 20px Z-axis translation given a 55deg viewing angle.
-                                    transition={{ duration: 4, delay: node.delay, repeat: Infinity, ease: "easeInOut" }}
+                                    className="flex flex-col items-center justify-center pointer-events-auto animate-float"
+                                    style={{ animationDelay: `${node.delay}s` }}
                                 >
                                     <div className="group flex flex-col items-center cursor-pointer transition-transform duration-300 hover:scale-110">
                                         {/* Pure Crisp SVG Icon */}
