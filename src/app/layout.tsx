@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,6 +18,7 @@ import GrainDotGrid from "@/components/GrainDotGrid";
 import MeshGradientBackground from "@/components/MeshGradientBackground";
 
 import ExitIntentModal from "@/components/ExitIntentModal";
+import { Analytics } from "@vercel/analytics/react";
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -54,12 +56,22 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased text-white min-h-screen relative`}
       >
+        <Script id="ms-clarity" strategy="afterInteractive">
+          {`
+            (function(c,l,a,r,i,t,y){
+                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "wcpuqqn21r");
+          `}
+        </Script>
         <MeshGradientBackground />
         <div className="relative z-10 w-full flex flex-col">
           {children}
         </div>
         <GrainDotGrid />
         <ExitIntentModal />
+        <Analytics />
       </body>
     </html>
   );

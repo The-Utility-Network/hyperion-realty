@@ -68,6 +68,11 @@ export default function Footer() {
                     <div className="text-gray-500 font-mono tracking-widest text-xs">
                         &copy; {new Date().getFullYear()} HYPERION REALTY SYSTEM
                     </div>
+                    <div className="flex items-center gap-6">
+                        <Link href="/privacy" className="text-gray-500 hover:text-hr-gold transition-colors font-mono tracking-widest text-[10px] uppercase">Privacy Protocols</Link>
+                        <Link href="/terms" className="text-gray-500 hover:text-hr-gold transition-colors font-mono tracking-widest text-[10px] uppercase">Terms of Service</Link>
+                        <Link href="/disclaimer" className="text-gray-500 hover:text-red-400 transition-colors font-mono tracking-widest text-[10px] uppercase">Risk Disclosure</Link>
+                    </div>
                     <div className="text-gray-600 font-mono tracking-widest text-[9px] uppercase border border-white/5 px-3 py-1 rounded bg-white/5">
                         OPERATIONAL STATUS: NOMINAL
                     </div>
