@@ -146,7 +146,7 @@ export default function TokenizationPipeline() {
                                             <div className="text-[12px] text-white/50 font-light tracking-wide">{node.desc}</div>
                                         </div>
                                     </div>
-                                </motion.div>
+                                </div>
                                 </div>
                             ))}
                         </div>
