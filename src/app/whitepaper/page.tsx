@@ -109,7 +109,7 @@ function Chapter({ chapter, index }: { chapter: ChapterData, index: number }) {
             className="scroll-mt-40 mb-40"
         >
             <motion.div variants={fadeInUp} className="mb-16 border-l border-white/10 pl-8 relative">
-                <div className="absolute top-0 -left-[1.5px] w-[3px] h-12 bg-gradient-to-b" style={{ from: chapter.color, to: 'transparent' }} />
+                <div className="absolute top-0 -left-[1.5px] w-[3px] h-12" style={{ backgroundImage: `linear-gradient(to bottom, ${chapter.color}, transparent)` }} />
                 <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded border mb-6 bg-black shadow-[0_0_20px_rgba(0,0,0,0.5)]" style={{ borderColor: `${chapter.color}40`, color: chapter.color }}>
                     <span className="font-mono text-[10px] tracking-widest font-bold">CHAPTER {chapter.number}</span>
                 </div>
