@@ -50,6 +50,17 @@ export const LOCATIONS: LocationData[] = [
         stats: { assetClass: 'Commercial & Luxury Hospitality', projectedYield: '4.9%', marketSize: '$310B' }
     },
     {
+        slug: 'laguna-beach',
+        name: 'Laguna Beach, CA',
+        region: 'Americas',
+        image: '/artifacts/locations/lagunabeach.png',
+        coords: { lat: 33.5427, lng: -117.7854 },
+        heroDesc: 'Hyperion Realty is evaluating Laguna Beach\'s world-renowned oceanfront commercial and luxury hospitality assets — the crown jewel of the Southern California coast.',
+        whyText: 'Laguna Beach represents one of the most supply-constrained luxury real estate markets in North America. Strict zoning laws, geographic isolation between the Pacific Ocean and protected canyons, and an ultra-high-net-worth demographic create an environment where premium commercial assets effectively function as monopoly holdings.',
+        detailText: 'Our pipeline targets irreplaceable luxury boutiques, boutique hospitality properties, and trophy mixed-use assets along the Pacific Coast Highway corridor. Laguna Beach\'s unique combination of artistic heritage and profound wealth concentration provides exceptional downside protection for tokenized real estate portfolios.',
+        stats: { assetClass: 'Luxury Retail & Hospitality', projectedYield: '4.5%', marketSize: '$15B' }
+    },
+    {
         slug: 'toronto',
         name: 'Toronto',
         region: 'Americas',
