@@ -22,8 +22,8 @@ export default function TradingBoard() {
     const historyRef = useRef<number[]>([5, 5, 4, 4, 5, 6, 5]);
     
     const [time, setTime] = useState(0); 
-    const reqRef = useRef<number>();
-    const startRef = useRef<number>();
+    const reqRef = useRef<number>(0);
+    const startRef = useRef<number>(0);
 
     // Portfolio State
     const [portfolioValue, setPortfolioValue] = useState<number>(100);
