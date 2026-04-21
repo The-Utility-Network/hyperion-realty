@@ -31,6 +31,23 @@ export default function CodexPage() {
 
     return (
         <div className="min-h-screen bg-[#050914] text-white">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "FAQPage",
+                        "mainEntity": terms.map(t => ({
+                            "@type": "Question",
+                            "name": t.term,
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": t.def
+                            }
+                        }))
+                    })
+                }}
+            />
             <Navbar />
             
             <div className="pt-40 pb-24 max-w-5xl mx-auto px-6">

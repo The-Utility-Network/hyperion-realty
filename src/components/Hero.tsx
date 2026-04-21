@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import GenerativeCityscape from '@/components/GenerativeCityscape';
 import { Building2 } from 'lucide-react';
 
 export default function Hero() {
@@ -26,13 +27,7 @@ export default function Hero() {
                 className="absolute inset-0 transition-transform duration-100 ease-out"
                 style={{ transform: `translate(${offset.x * 30}px, ${offset.y * 30}px) scale(1.1)` }}
             >
-                <Image
-                    src="/artifacts/hyperion_bg.png"
-                    alt="Hyperion Realty Background"
-                    fill
-                    className="object-cover opacity-80 object-center"
-                    priority
-                />
+                <GenerativeCityscape />
             </div>
 
             {/* Content Overlay */}

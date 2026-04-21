@@ -26,6 +26,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
         title: `${post.title} | Hyperion Intelligence`,
         description: post.metaDescription,
+        alternates: {
+            canonical: `/blog/${slug}`,
+        },
     };
 }
 
@@ -41,6 +44,33 @@ export default async function BlogPostPage({ params }: Props) {
 
     return (
         <div className="min-h-screen bg-[#050914] text-white selection:bg-hr-gold selection:text-black font-sans">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Article",
+                        "headline": post.title,
+                        "description": post.metaDescription,
+                        "datePublished": post.date,
+                        "author": {
+                            "@type": "Organization",
+                            "name": "Hyperion Trust"
+                        },
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Hyperion Realty",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://hyperion.theutilitycompany.co/HRLogoDarkSymbol.png"
+                            }
+                        },
+                        "image": [
+                            `https://hyperion.theutilitycompany.co${post.coverImage}`
+                        ]
+                    })
+                }}
+            />
             <Navbar />
 
             <div className="relative pt-28 overflow-hidden pb-24">

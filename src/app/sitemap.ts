@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { COMPARISONS } from '@/data/comparisons';
+import { LOCATIONS } from '@/data/locations';
 
 const BASE_URL = 'https://hyperion.theutilitycompany.co';
 
@@ -11,9 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         priority: 0.7,
     }));
 
-    const locationSlugs = ['miami', 'dubai', 'new-york', 'london', 'singapore'];
-    const locationEntries = locationSlugs.map(city => ({
-        url: `${BASE_URL}/locations/${city}`,
+    const locationEntries = LOCATIONS.map(loc => ({
+        url: `${BASE_URL}/locations/${loc.slug}`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
         priority: 0.6,

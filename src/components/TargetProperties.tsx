@@ -9,6 +9,7 @@ const targets = [
         title: 'Elite Commercial Hubs',
         desc: 'Sourcing iconic, high-occupancy commercial structures in major metropolitan centers to anchor stable, long-term yield distribution.',
         image: '/artifacts/luxury_exterior_light.png',
+        alt: 'Exterior architectural view of an elite commercial office tower',
         targetYield: '8-12%',
         span: 'md:col-span-2'
     },
@@ -16,6 +17,7 @@ const targets = [
         title: 'Premium Hospitality',
         desc: 'Curating world-class hotel and resort properties that leverage dynamic operational revenue for aggressive tokenized scaling.',
         image: '/artifacts/luxury_interior_lobby.png',
+        alt: 'High-end interior lobby of a premium hospitality resort',
         targetYield: '10-15%',
         span: 'md:col-span-1'
     },
@@ -23,6 +25,7 @@ const targets = [
         title: 'Luxury Residential',
         desc: 'Securing prime coastal and ultra-luxury residential domains, blending capital appreciation with high-demand rental channels.',
         image: '/artifacts/luxury_pool_terrace.png',
+        alt: 'Luxury residential pool terrace overlooking the coast',
         targetYield: '6-10%',
         span: 'md:col-span-3'
     }
@@ -71,7 +74,7 @@ export default function TargetProperties() {
                         >
                             <Image 
                                 src={target.image} 
-                                alt={target.title} 
+                                alt={target.alt} 
                                 fill 
                                 className="object-cover opacity-80 brightness-110 contrast-[1.1] transition-transform duration-1000 group-hover:scale-105"
                             />

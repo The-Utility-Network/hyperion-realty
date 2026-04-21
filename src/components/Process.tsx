@@ -59,7 +59,7 @@ export default function Process() {
                             <div className="relative w-full h-[260px] border-b border-hr-gold/10 overflow-hidden bg-black flex items-center justify-center">
                                 <Image 
                                     src="/tokenization_schematic.png" 
-                                    alt="Asset Tokenization Schematic" 
+                                    alt="Detailed technical schematic demonstrating the Hyperion protocol flow: from physical real estate asset, through the legal ERC721 deed framing, into fractional ERC20 distribution." 
                                     fill 
                                     className="object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700"
                                 />

@@ -26,6 +26,9 @@ export async function generateMetadata({ params }: Props) {
     return {
         title: `Tokenized Real Estate in ${data.name} | Hyperion Realty`,
         description: `Explore institutional-grade, tokenized commercial and luxury real estate acquisition targets in ${data.name}. Fractional ownership via the Hyperion dual-token protocol.`,
+        alternates: {
+            canonical: `/locations/${city}`,
+        },
     };
 }
 
@@ -41,6 +44,23 @@ export default async function LocationPage({ params }: Props) {
 
     return (
         <div className="min-h-screen bg-[#050914] text-white">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "Place",
+                        "name": `${data.name} Real Estate Targets`,
+                        "description": `Tokenized commercial and luxury real estate acquisition targets in ${data.name}.`,
+                        "geo": {
+                            "@type": "GeoCoordinates",
+                            "latitude": data.coords.lat,
+                            "longitude": data.coords.lng
+                        },
+                        "image": `https://hyperion.theutilitycompany.co${data.image}`
+                    })
+                }}
+            />
             <Navbar />
             
             {/* Full-width Hero */}
