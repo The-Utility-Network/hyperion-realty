@@ -1,0 +1,142 @@
+\documentclass[11pt]{article}
+\usepackage{hyperion_brand}
+
+\begin{document}
+
+% --- Cover Page ---
+\makehyperioncover{AML/KYC Compliance and CFT Policy Manual}{Definitive Operational Manual Outlining Regulatory Compliance, Customer Due Diligence, and Onchain AML Enforcement under UAE and VARA Guidelines}{002}
+
+% --- Table of Contents ---
+\newpage
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+
+% --- Begin Body ---
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Regulatory and Legal Framework}
+Hyperion Realty operates in strict accordance with the anti-money laundering, combating the financing of terrorism, and illegal organizations regulations of the United Arab Emirates (UAE) and the Virtual Assets Regulatory Authority (VARA). The legal framework anchoring this manual includes:
+\begin{itemize}
+    \item \textbf{UAE Federal Decree-Law No. (20) of 2018} on Anti-Money Laundering and Combating the Financing of Terrorism and Illegal Organisations.
+    \item \textbf{Cabinet Decision No. (10) of 2019} on the Implementing Regulation of Federal Decree-Law No. (20) of 2018.
+    \item \textbf{VARA Compliance and Risk Management Rulebook} (issued under the Virtual Assets and Related Activities Regulations 2023).
+\end{itemize}
+
+Failure to implement robust compliance procedures exposes the platform to extreme regulatory sanctions, license revocation, and criminal prosecution. Therefore, this manual is a legally binding operational framework for all Hyperion employees, directors, and external operators.
+
+\section{Designated Compliance Personnel}
+To ensure the independence, authority, and execution of our compliance mandate, Hyperion designates two critical regulatory roles:
+
+\subsection{Chief Compliance Officer (CCO)}
+The Chief Compliance Officer (CCO) has ultimate responsibility for the implementation, supervision, and ongoing evolution of Hyperion's compliance framework. The CCO reports directly to the Board of Directors. The CCO's duties include:
+\begin{itemize}
+    \item Coordinating regulatory audits and acting as the primary liaison with VARA officers.
+    \item Reviewing and updating internal policies in response to emerging regulatory mandates.
+    \item Ensuring that all business lines (sourcing, marketing, technology) integrate compliance standards into their core processes.
+\end{itemize}
+
+\subsection{Money Laundering Reporting Officer (MLRO)}
+The Money Laundering Reporting Officer (MLRO) oversees day-to-day transaction monitoring and financial crime investigation. The MLRO operates with complete operational independence, possessing the unilateral authority to file suspicious transactions without prior board approval. The MLRO's duties include:
+\begin{itemize}
+    \item Reviewing internal suspicious activity alerts triggered by transaction monitoring systems.
+    \item Conducting deep investigations into anomalous customer behaviors.
+    \item Preparing and filing **Suspicious Transaction Reports (STRs)** and **Suspicious Activity Reports (SARs)** with the UAE Financial Intelligence Unit (FIU) via the goAML portal.
+\end{itemize}
+
+\section{Onchain AML/KYC Enforcement and Transfer Hooks}
+A cornerstone of Hyperion’s compliance architecture is the containment of regulatory risk directly on the blockchain. Rather than relying solely on post-transaction monitoring, the Hyperion Protocol prevents non-compliant transfers from executing.
+
+\begin{regulatorybox}{Embedded Smart Contract Compliance: EVM Transfer Hooks}
+Hyperion's property-backed ERC20 tokens incorporate an immutable, network-level compliance enforcement system. Every `transfer` and `transferFrom` transaction triggers an internal check that queries a decentralized, authorized **Onchain Identity Attestation Registry** (e.g., Onyx, Quadrata, or a custom Hyperion-managed registry). 
+
+If the sender or the receiver does not possess a valid, active KYC/AML attestation signature issued by an approved verification provider, the smart contract transaction is automatically reverted at the EVM level before block settlement. The transfer physically cannot settle on the blockchain.
+\end{regulatorybox}
+
+This transfer hook mechanism provides several institutional-grade advantages:
+\begin{enumerate}
+    \item \textbf{Decentralized Protection}: Even if a token holder attempts to trade their ERC20 shares directly via a decentralized automated market maker (AMM) or a private wallet-to-wallet transfer, the transaction must pass the compliance hook check.
+    \item \textbf{Gas Efficiency}: By utilizing offchain identity verification that writes lightweight cryptographic signatures (attestations) to the blockchain, onchain check costs are kept to a bare minimum, optimizing user gas fees.
+    \item \textbf{Real-Time Enforcement}: Traditional securities settlement relies on human compliance desks verifying transfers after-the-fact (T+1 to T+5). Hyperion's protocol validates, enforces, and settles compliant transfers in a single block (T+12 seconds).
+\end{enumerate}
+
+\section{Customer Due Diligence (CDD) Framework}
+Onboarding an investor to the Hyperion platform requires a rigorous, multi-tier Customer Due Diligence (CDD) workflow. No account activation or token distribution is permitted until verification is complete.
+
+\subsection{Individual Verification (Natural Persons)}
+For retail and accredited individual investors, the platform collects and verifies:
+\begin{itemize}
+    \item Full legal name and alias.
+    \item Permanent residential address (verified via utility bill, bank statement, or official residency certificate dated within 90 days).
+    \item Date of birth and nationality.
+    \item Valid Government-issued Photo ID (passport, national ID, or UAE Emirates ID, verified via biometric facial recognition and liveness checks).
+\end{itemize}
+
+\subsection{Corporate and Institutional Verification (Legal Entities)}
+For corporate, trust, and family office investors, Hyperion conducts a comprehensive structural audit:
+\begin{enumerate}
+    \item Certificate of Incorporation or Memorandum and Articles of Association.
+    \item Valid commercial license or registry printout.
+    \item Register of Directors and Register of Shareholders.
+    \item **Ultimate Beneficial Owner (UBO) Identification**: Hyperion identifies and verifies all natural persons holding a 10\% or greater equity or voting interest in the entity, or who exercise ultimate executive control.
+\end{enumerate}
+
+\subsection{Screening and Sanctions Protocol}
+All prospective investors—individuals and corporate officers—are screened in real-time against:
+\begin{itemize}
+    \item United Nations Security Council Consolidated Sanctions List.
+    \item UAE Local Terrorist List and regional sanctions registries.
+    \item Politically Exposed Persons (PEP) lists (foreign, domestic, and international organization PEPs). PEP accounts require CCO approval and are subjected to continuous **Enhanced Due Diligence (EDD)**.
+    \item Geographic Blacklists: Citizens or residents of FATF-identified High-Risk Jurisdictions subject to a Call for Action (e.g., North Korea, Iran) or jurisdictions under Increased Monitoring are blocked at the onboarding level.
+\end{itemize}
+
+\section{Risk-Based Customer Classification}
+Hyperion implements a dynamic **Risk-Based Approach (RBA)**. Every investor profile is evaluated against an algorithmic risk-scoring matrix, classifying them into three risk tiers:
+\begin{table}[h!]
+\centering
+\begin{tabularx}{\textwidth}{l l X}
+\toprule
+\textbf{Risk Category} & \textbf{CDD Requirement} & \textbf{Monitoring and Audit Cadence} \\
+\midrule
+\textbf{Low Risk} & Standard CDD & Standard transaction monitoring; periodic review every 24 months. \\
+\textbf{Medium Risk} & Standard CDD + Source of Wealth Statement & Weekly automated transactional review; periodic review every 12 months. \\
+\textbf{High Risk} & Enhanced Due Diligence (EDD) + Certified Source of Funds & Real-time, transaction-by-transaction manual MLRO review; full profile audit every 6 months. \\
+\bottomrule
+\end{tabularx}
+\caption{Risk-Based Customer Classification Matrix}
+\end{table}
+
+\textbf{High-Risk Trigger Events} include: transactions originating from high-risk geographic borders, PEP classifications, corporate structures utilizing complex layerings of shell companies in tax havens, or sudden, uncharacteristic spikes in transaction volumes.
+
+\section{Transaction Monitoring and goAML Reporting}
+Hyperion's compliance team utilizes cutting-edge blockchain analytics tools (e.g., Chainalysis, Elliptic) to perform real-time tracking of address histories, looking for:
+\begin{itemize}
+    \item Deposits originating from mixer protocols (e.g., Tornado Cash), darknet marketplaces, or known stolen asset pools.
+    \item Structuring behaviors, where an investor attempts to break up large transfers to bypass compliance alert thresholds.
+    \item High-velocity round-tripping, indicating potential wash trading.
+\end{itemize}
+
+When anomalous behavior is detected, the transaction is suspended, and the MLRO conducts a structured investigation. If a reasonable suspicion of money laundering or terrorist financing is identified, the MLRO will file an STR or SAR with the UAE Financial Intelligence Unit via the **goAML Portal** within 24 hours of forming the suspicion, in accordance with federal mandates.
+
+\section{Record Retention and Audits}
+To ensure administrative compliance, Hyperion maintains an absolute record-keeping policy:
+\begin{itemize}
+    \item All CDD records, biometric verifications, corporate registers, transaction histories, block hashes, and MLRO investigation files are securely stored for a **minimum of five (5) years** after the termination of the business relationship.
+    \item Customer records are encrypted and stored in compliance with the **UAE Data Protection Law** and VARA Technology standards.
+    \item Hyperion undergoes an **independent third-party AML audit annually** to test the operational effectiveness of its compliance policies, the results of which are submitted directly to VARA examiners.
+\end{itemize}
+
+\par\vspace{1.5cm}
+\noindent
+\begin{tabularx}{\textwidth}{X X}
+    \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+    \textbf{Money Laundering Reporting Officer (MLRO)} & \textbf{Date} \\
+    & \\
+    \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+    \textbf{Attested by Chief Compliance Officer} & \textbf{Date}
+\end{tabularx}
+
+\makehyperionseal
+
+\end{document}

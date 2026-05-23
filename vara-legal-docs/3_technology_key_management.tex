@@ -1,0 +1,119 @@
+\documentclass[11pt]{article}
+\usepackage{hyperion_brand}
+
+\begin{document}
+
+% --- Cover Page ---
+\makehyperioncover{Technology and Cryptographic Key Management Policy}{Detailed Technical and Cryptographic Filing Outlining Wallet Custody, Smart Contract Security Audits, Oracle Controls, and Business Continuity Policies under the VARA Technology Rulebook}{003}
+
+% --- Table of Contents ---
+\newpage
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+
+% --- Begin Body ---
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Introduction and Regulatory Standards}
+This policy manual outlines the technological security, system integrity, and cryptographic key custody protocols deployed by Hyperion Realty. Operating a decentralized property tokenization trust requires robust infrastructure and absolute protection of virtual assets.
+
+This policy is designed to comply with the **VARA Technology and Information Rulebook** issued under the Virtual Assets and Related Activities Regulations 2023. Our infrastructure relies on industry-standard, battle-tested cryptographic primitives:
+\begin{itemize}
+    \item \textbf{Asymmetric Cryptography}: Elliptic Curve Digital Signature Algorithm (ECDSA) on the secp256k1 curve, securing transaction execution on Ethereum-compatible networks.
+    \item \textbf{Hashing Primitives}: Keccak-256 for block hash verification and SHA-256 for internal file integrity audits.
+    \item \textbf{Symmetric Encryption}: Advanced Encryption Standard (AES-256-GCM) protecting all sensitive customer database entries, legal records, and PII data at rest.
+\end{itemize}
+
+\section{Smart Contract Architecture and Audit Protocols}
+Hyperion's core business logic (tokenization, yield distribution, governance, compliance transfer hooks) is encoded in Ethereum Virtual Machine (EVM) smart contracts. To guarantee the absolute safety of investor capital and prevent exploit vectors:
+
+\subsection{Immutable Proxy Patterns}
+Hyperion utilizes a structured **Transparent Proxy Pattern** (EIP-1967) for core platform contracts. While upgradeability is required to implement security patches and adapt to changing regulatory rules, the proxy admin keys are not held by a single administrator. They are governed exclusively by the Hyperion Board of Directors and the Risk and Security Committee through a structured 3-of-5 Gnosis Safe multisig vault. No single individual possesses the ability to unilaterally modify deployed smart contract logic.
+
+\subsection{Rigorous Audit Pipelines}
+Before any smart contract is deployed to mainnet, it must undergo a minimum of three independent security audits conducted by tier-1 security firms (e.g., Trail of Bits, OpenZeppelin, Consensys Diligence, or equivalent). 
+\begin{itemize}
+    \item All audit reports are published in full on the Hyperion documentation portal and embedded in the contract's metadata.
+    \item No code is deployed to mainnet if any "High" or "Critical" vulnerabilities remain unresolved.
+\end{itemize}
+
+\subsection{Continuous Bug Bounty Program}
+To ensure persistent monitoring by global white-hat security researchers, Hyperion funds a continuous **Bug Bounty Program** hosted via Immunefi. The program features a maximum payout of **\$500,000** for critical smart contract vulnerabilities (e.g., unauthorized asset drains, yield extraction exploits, or compliance hook bypasses).
+
+\section{Cryptographic Key Custody: 3-of-5 Multisig Deed Vault}
+The absolute physical backing of Hyperion's ecosystem lies in the physical property deeds, which are legally registered to single-asset SPVs. The master shares of these SPVs are anchored to unique, non-fractionalized ERC721 tokens (Deed Anchors). 
+
+\begin{regulatorybox}{Institutional Deed Vault: 3-of-5 Gnosis Safe Custody}
+The ERC721 property-backed tokens sit in a specialized Gnosis Safe multisig contract that serves as our institutional cold-storage vault. A transfer of an ERC721 Deed Anchor requires a minimum of **3-of-5 authorized cryptographic signatures**. The 5 keys are distributed among independent, high-security custodians:
+
+1. **Key Custodian A (CEO)**: Based in Dubai, UAE (Hardware wallet in secure bank vault).
+2. **Key Custodian B (CCO)**: Based in Dubai, UAE (Hardware wallet in secure bank vault).
+3. **Key Custodian C (Independent Trustee)**: Based in Zurich, Switzerland (Professional Swiss institutional custody partner).
+4. **Key Custodian D (Legal Counsel)**: Based in New York, USA (Hardware wallet in law firm vault).
+5. **Key Custodian E (Backup Custodial Bank)**: Based in Singapore (HSM-backed corporate custody key).
+\end{regulatorybox}
+
+\subsection{Key Generation and Ceremony Protocols}
+Key generation ceremonies are conducted under strict physical isolation protocols:
+\begin{itemize}
+    \item All key pairs are generated on air-gapped hardware wallets (e.g., Ledger Enterprise, Trezor Safe) using brand new, factory-sealed devices.
+    \item Seed phrases (24 words) are recorded on high-grade titanium plates and stored in separate, geographically isolated safe deposit vaults.
+    \item No digital copies, photographs, or network-accessible backups of seed phrases are permitted under any circumstances.
+\end{itemize}
+
+\subsection{Operational Procedure for Deed Transfers}
+In the rare event of a physical asset sale or portfolio rebalancing, the transfer of the representative ERC721 token follows a structured 72-hour workflow:
+\begin{enumerate}
+    \item \textbf{Proposal Phase}: The CCO submits a formal request detailing the physical contract of sale and the target wallet address.
+    \item \textbf{Verification Phase}: Three independent legal reviews are uploaded to the governance dashboard, confirming the sale terms.
+    \item \textbf{Signing Phase}: Custodians review the signed transaction parameters on their hardware screens and sign.
+    \item \textbf{Timelock Execution}: Once 3 signatures are gathered, the transaction enters a mandatory **48-hour timelock**, allowing any security anomalies to be detected and blocked.
+\end{enumerate}
+
+\section{Oracle Security and Anomaly Detection}
+Hyperion's smart contracts rely on external price feeds to calculate token-to-equity ratios and ensure AMM pools trade in alignment with real-world valuations. To eliminate oracle manipulation attacks:
+
+\subsection{Time-Weighted Median Valuation Model}
+The protocol utilizes a time-weighted median price feed derived from three independent, professional commercial real estate appraisal firms (registered with the Royal Institution of Chartered Surveyors - RICS and certified in Dubai). Appraisals are conducted and updated semi-annually.
+
+\subsection{Governance Timelocks and Emergency Halts}
+All oracle updates must be submitted through our custom oracle contract:
+\begin{itemize}
+    \item An automated anomaly detection script monitors all incoming valuation changes. Any update that deviates by more than two standard deviations from historical trends is automatically paused.
+    \item Approved valuation updates are subjected to a mandatory **48-hour operational timelock** before reflecting onchain, allowing the Risk and Security Committee and external auditors to verify the figures.
+    \item In the event of confirmed oracle failure or compromise, the Risk Committee possesses the authority to trigger an emergency circuit breaker, freezing AMM trading and yield payouts until a manual resolution is achieved.
+\end{itemize}
+
+\section{Cybersecurity and Network Infrastructure}
+Beyond blockchain controls, Hyperion’s web dashboard, compliance portals, and databases are protected by state-of-the-art cybersecurity protocols:
+\begin{itemize}
+    \item \textbf{DDoS and Edge Protection}: All web traffic routing is secured by Cloudflare Enterprise, utilizing web application firewalls (WAF), rate limiting, and continuous DDoS mitigation.
+    \item \textbf{Penetration Testing}: Hyperion contracts a certified third-party cybersecurity firm to conduct full gray-box penetration tests **bi-annually** on all web interfaces, APIs, and administrative portals.
+    \item \textbf{Data Privacy}: Customer PII data collected during the KYC process is isolated in a separate, encrypted AWS Enclave, utilizing zero-knowledge data patterns to ensure no raw identity documents are exposed on public databases.
+\end{itemize}
+
+\section{Business Continuity and Disaster Recovery (BCDR)}
+To ensure operational resilience in the face of catastrophic infrastructure failures:
+\begin{enumerate}
+    \item \textbf{Node Redundancy}: Hyperion maintains private, redundant Ethereum and Layer-2 node clusters across three separate geographic regions (AWS Frankfurt, Google Cloud Singapore, and physical nodes in Dubai), ensuring continuous API connectivity.
+    \item \textbf{Failover Offramps}: The fiat-to-stablecoin rental conversion bridge maintains active integrations with three independent liquidity providers. If Provider A experiences downtime or regulatory restrictions, the system automatically redirects stablecoin routes to Provider B or C.
+    \item \textbf{Database Replication}: Secure enclaves are replicated in real-time across multiple active-active availability zones with cryptographic verification of backup states.
+\end{enumerate}
+
+In the event of a total network outage or physical disaster in Dubai, the Swiss Independent Trustee and Singapore Backup Custodial Bank possess the coordinate authority to assume regional administrative controls, ensuring the uninterrupted flow of global rental distributions to Hyperion's token holders.
+
+\par\vspace{1.5cm}
+\noindent
+\begin{tabularx}{\textwidth}{X X}
+    \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+    \textbf{Chief Technology Officer (CTO)} & \textbf{Date} \\
+    & \\
+    \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+    \textbf{Attested by Chief Security Officer (CSO)} & \textbf{Date}
+\end{tabularx}
+
+\makehyperionseal
+
+\end{document}

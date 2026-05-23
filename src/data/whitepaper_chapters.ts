@@ -81,12 +81,15 @@ Because these fractional tokens adhere to the ERC20 standard — the single most
 The ERC20 contract includes embedded transfer hooks that enforce compliance checks (KYC/AML verification via onchain attestation registries) without requiring centralized intermediaries. This allows Hyperion properties to operate within regulatory frameworks while preserving the permissionless settlement speed of the underlying blockchain.`
             },
             {
-                heading: 'Supply Curve Mechanics',
-                content: `The total ERC20 supply for each property is fixed at mint time and cannot be inflated. If a property is appraised at $10,000,000, exactly 10,000,000 tokens are minted. No additional supply can ever be created without a formal reappraisal process that requires multisig DAO approval and updated legal documentation anchored to the ERC721 metadata.
+                heading: 'Supply Curve & Tokenization Markup',
+                content: `The total ERC20 token supply for each property is immutably fixed at mint time and calibrated to provide maximum capital efficiency. To enable healthy operations and robust market-making, Hyperion deploys a structured **20% property tokenization markup** model. When a property is acquired at its fair market/appraised value (e.g., $10,000,000), the protocol issues a total supply scaled to 120% of the underlying asset value (exactly 12,000,000 tokens initial supply, valued at $1.00 per token).
 
-This fixed-supply guarantee is critical for investor confidence. Unlike traditional equity offerings where boards can dilute shareholders through secondary offerings, the Hyperion supply curve is cryptographically immutable. The total number of tokens representing your property will never change without your explicit governance vote.
+This 20% tokenization markup is mathematically partitioned to serve three distinct strategic functions:
+1. **5% Corporate Profit**: Distributed directly to Hyperion's Treasury as corporate earnings to reward sourcing, institutional administration, and platform overhead.
+2. **10% Algorithmic AMM Liquidity Seed**: Placed into a dedicated liquidity pool using an algorithmic Automated Market Maker (AMM) to provide instant, safe, and reliable secondary market liquidity to token holders.
+3. **5% Protocol Reserve**: Set aside in a restricted multi-signature treasury to cover regulatory compliance, initial due diligence, localized legal structuring, and protocol development launch reserves.
 
-Initial distribution follows a structured allocation: 60% public liquidity pool, 20% Hyperion DAO treasury (locked with 12-month linear vesting), 15% property acquisition fund, and 5% protocol development reserve. These allocations are hardcoded into the deployment contract and are publicly auditable by any participant at any time.`
+This structure guarantees that every property tokenized on Hyperion launches with deep, immediate liquidity from day one. Unlike traditional syndicates where investors are locked into an illiquid placement for 5-10 years, Hyperion token holders can trustfully buy or sell their shares at any time through our algorithmic AMM infrastructure, enjoying the price stability of physical real estate combined with the rapid liquidity of decentralized finance.`
             }
         ]
     },
@@ -100,20 +103,20 @@ Initial distribution follows a structured allocation: 60% public liquidity pool,
         heroImage: '/artifacts/whitepaper/yield_engine.png',
         sections: [
             {
-                heading: 'Primary Physical Dividends',
+                heading: 'Primary Physical Dividends & Yield Modeling',
                 content: `In a traditional property fund, rental income follows a tortuous path from tenant to investor. The tenant pays rent to the property manager. The property manager deducts management fees and remits the balance to the fund administrator. The fund administrator reconciles accounts, deducts additional administrative fees, and forwards net proceeds to the transfer agent. The transfer agent finally distributes dividends to investors — often 60-90 days after the rent was originally collected.
 
-Hyperion Realty collapses this entire chain into a single deterministic transaction. The moment a commercial tenant satisfies their monthly fiat lease obligation, the integrated fiat off-ramp (connected via a banking API bridge to the property management escrow account) converts the net rental proceeds into USDC stablecoin.
+Hyperion Realty collapses this entire chain into a single deterministic transaction. Our target portfolio properties are estimated to earn up to **6% to 7% in Net Operating Income (NOI)** annually. To cover corporate asset management and administrative compliance overhead, Hyperion extracts a **1.0% annual asset management fee** calculated against the total property valuation. After deducting this fee, a robust net yield of roughly **5% to 6%** is distributed directly to token holders.
 
-The Yield Matrix smart contract then executes a block-snapshot of all wallets holding the property's ERC20 tokens at that precise moment and automatically distributes the USDC pro-rata to every holder. No officers, no reconciliation, no custodial delays. The entire process — from tenant payment to investor distribution — completes within a single Ethereum block confirmation, typically 12 seconds.`
+The integrated fiat-to-stablecoin bridge converts monthly tenant rental payments into USDC stablecoin. The Yield Matrix smart contract automatically deducts the pro-rata portion of the 1.0% annual asset management fee and executes a block-snapshot of all active wallets holding the property's ERC20 tokens at that precise moment, distributing the net USDC pro-rata to every holder. No manual reconciliation, no custodial delays. The entire process — from tenant payment to investor distribution — completes within 12 seconds.`
             },
             {
-                heading: 'The Perpetual Recycling Flywheel',
-                content: `Beyond primary rental yields, Hyperion tokenomics introduce an entirely novel economic mechanism: the Perpetual Recycling Tax. Every secondary market trade of the ERC20 equity tokens incurs a protocol-level transaction fee of 0.5%.
+                heading: 'Secondary Market Trading & Protocol Sustainment',
+                content: `Beyond primary rental yields, the Hyperion secondary ecosystem is structured to ensure continuous liquidity and operational excellence. Every secondary market trade of the ERC20 equity tokens incurs a protocol-level transaction fee of **1.5% on trading volume**.
 
-This fee is not extracted as profit. It is locked immediately into a dedicated multisig treasury explicitly purposed to fund real-world capital improvements to the physical structure — roof replacements, HVAC modernization, luxury lobby renovations, energy efficiency upgrades, and structural reinforcement.
+This fee is routed to Hyperion to cover continuous platform maintenance, liquidity balancing operations, secure oracle node feeds, and operational sustainment. Embedded directly in the ERC20 contract compliance transfer hooks, the 1.5% trading volume fee executes trustlessly on all decentralized exchange transactions, ensuring the protocol remains highly resilient and well-funded without relying on centralized venture capital capital calls.
 
-The result is an unprecedented closed-loop economic flywheel: secondary market trading volume directly funds physical property improvements, which increase the property's appraised value, which increases the fundamental backing of each ERC20 token, which stimulates further trading interest, which generates additional improvement capital. The asset appreciates in the physical world in direct proportion to its digital trading velocity.`
+This model aligns Hyperion's incentives directly with token holders: by maximizing secondary market liquidity and institutional-grade property uptime, the platform generates sustainable fee revenue while token holders enjoy instant market-making and stable yield distribution.`
             },
             {
                 heading: 'Snapshot Mechanics & Distribution Frequency',

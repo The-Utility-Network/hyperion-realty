@@ -1,0 +1,164 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{hyperion_brand}
+
+\begin{document}
+
+% Generate Branded Cover Page
+\makehyperioncover{VARA Regulatory Standards Mapping}{Internal Compliance Cross-Reference \& Statutory Verification Matrix}{5-MAPPING}
+
+% --- Table of Contents ---
+\newpage
+\thispagestyle{plain}
+\noindent{\fontfamily{phv}\selectfont\fontsize{20}{24}\selectfont\textbf{\color{HyperionCharcoal}{Table of Contents}}}
+\par\vspace{15pt}
+\makeatletter
+\@starttoc{toc}
+\makeatother
+\clearpage
+
+% --- Section 1: Executive Overview ---
+\section{Executive Statutory Framework}
+Hyperion Realty operates as a centralized Virtual Asset Service Provider (VASP) under direct licensing from the **Dubai Virtual Assets Regulatory Authority (VARA)**. To guarantee absolute compliance with the laws of the Emirate of Dubai and the federal statutes of the United Arab Emirates, this internal document serves as our master cross-walk. It maps every operational policy, smart contract mechanic, and corporate charter to the exact regulatory standards, guidelines, and rulebooks enforced by VARA.
+
+This mapping verifies that our centralized asset management framework, our custom **HYPERION-20** token standard, and our asset-level SPV isolations fulfill the highest institutional standard of fiduciary responsibility and consumer protection.
+
+---
+
+% --- Section 2: Document 1 (RBP) Mapping ---
+\section{Regulatory Business Plan (RBP) Mapping}
+The Regulatory Business Plan details the commercial viability, corporate structure, and the **HYPERION-20** dual-token asset framework.
+\par\vspace{10pt}
+
+\begin{table}[h!]
+\centering
+\begin{tabularx}{\textwidth}{l p{5cm} X}
+\toprule
+\textbf{VARA Rulebook Article} & \textbf{Statutory Requirement} & \textbf{Hyperion Implementation \& Document Section} \\
+\midrule
+\textbf{VA Issuance Rulebook} & Prior approval for the public offering and issuance of property-backed tokens. & Section 3: Dual-Token Architecture introduces the issuance protocol for HYPERION-20 tokens backed by the vaulted ERC721 deeds. \\
+\midrule
+\textbf{VA Management Rules} & Fiduciary duty of care when managing virtual assets on behalf of clients. & Section 2 \& 7: Defines Hyperion as a centralized, non-DAO manager holding 100\% of the underlying DIFC/ADGM SPVs. \\
+\midrule
+\textbf{VARA Market Conduct} & Clear, non-misleading marketing and transparent fee structures. & Section 5: Formally details the 20\% markup breakdown, 1.0\% annual management fee, and the 1.5\% secondary volume fee. \\
+\bottomrule
+\end{tabularx}
+\caption{Regulatory Business Plan (RBP) Statutory Mapping}
+\end{table}
+
+---
+
+% --- Section 3: Document 2 (AML/KYC) Mapping ---
+\section{AML/KYC and CFT Policy Mapping}
+The AML/KYC manual governs our onboarding, risk scoring, sanction screenings, and network-level transfer hook checks.
+\par\vspace{10pt}
+
+\begin{table}[h!]
+\centering
+\begin{tabularx}{\textwidth}{l p{5cm} X}
+\toprule
+\textbf{UAE / VARA Reference} & \textbf{Statutory Requirement} & \textbf{Hyperion Implementation \& Document Section} \\
+\midrule
+\textbf{Federal Decree-Law No. (20) of 2018} & Establishment of robust policies to combat money laundering and terrorist financing. & Section 1: Integrates the UAE federal AML/CFT statutory framework into our corporate onboarding. \\
+\midrule
+\textbf{VARA Compliance Rulebook} & Implementation of automated systems to screen against local and international sanction lists. & Section 4: Automated screening against United Nations, UAE Local, and OFAC lists prior to token whitelisting. \\
+\midrule
+\textbf{VARA Risk Rules} & Risk-Based Approach (RBA) categorizing customers into Low, Medium, and High Risk. & Section 5: Matrix mapping CDD/EDD requirements and audit cadences to investor risk tiers. \\
+\midrule
+\textbf{FIU Mandate} & Timely reporting of suspicious transactions via the goAML portal. & Section 6: Standardized MLRO workflow for suspicious transaction analysis and goAML STR/SAR filing. \\
+\bottomrule
+\end{tabularx}
+\caption{AML/KYC and CFT Policy Statutory Mapping}
+\end{table}
+
+\clearpage
+
+% --- Section 4: Document 3 (Tech & Key) Mapping ---
+\section{Technology and Cryptographic Key Management Mapping}
+The Technology manual outlines smart contract security, cryptographic key management, and data privacy enclaves.
+\par\vspace{10pt}
+
+\begin{table}[h!]
+\centering
+\begin{tabularx}{\textwidth}{l p{5cm} X}
+\toprule
+\textbf{VARA Rulebook Article} & \textbf{Statutory Requirement} & \textbf{Hyperion Implementation \& Document Section} \\
+\midrule
+\textbf{VA Tech \& Info Rules} & Cryptographic security, multi-signature storage, and private key isolation. & Section 3: 3-of-5 Gnosis Safe cold-storage multisig vault for the ERC721 property deed NFT. \\
+\midrule
+\textbf{VARA Tech Rules} & Independent third-party security audits for all virtual asset systems. & Section 2: Mandatory pipeline of 3 independent audits (e.g. Trail of Bits, OpenZeppelin) prior to mainnet deployment. \\
+\midrule
+\textbf{VARA BCDR Rules} & Comprehensive Business Continuity and Disaster Recovery (BCDR) protocols. & Section 6: Private geographical node redundancy, failover offramps, and Swiss/Singapore trustee emergency controls. \\
+\midrule
+\textbf{UAE Data Protection} & Cryptographic protection of personally identifiable information (PII) data at rest. & Section 5: Isolation of all investor KYC records inside secure, hardware-encrypted AWS Enclaves. \\
+\bottomrule
+\end{tabularx}
+\caption{Technology and Key Management Statutory Mapping}
+\end{table}
+
+---
+
+% --- Section 5: Document 4 (Governance) Mapping ---
+\section{Fit and Proper Governance Mapping}
+The Governance Framework ensures the integrity, competence, and financial soundness of all Hyperion directors and officers.
+\par\vspace{10pt}
+
+\begin{table}[h!]
+\centering
+\begin{tabularx}{\textwidth}{l p{5cm} X}
+\toprule
+\textbf{VARA Rulebook Article} & \textbf{Statutory Requirement} & \textbf{Hyperion Implementation \& Document Section} \\
+\midrule
+\textbf{VARA Company Rules} & Designation of specific controlled functions (CEO, CCO, MLRO) and fit evaluations. & Section 4: Defines strict criteria for professional competency, integrity, and financial soundness. \\
+\midrule
+\textbf{VARA Company Rules} & Creation of a centralized conflict of interest register and disclosure rules. & Section 3: Implements a formal Board Conflict of Interest Registry and mandatory recusal requirements. \\
+\midrule
+\textbf{VARA Fiduciary Rules} & Establishing operational sub-committees for continuous oversight. & Section 2: Sets up three specialized boards: Sourcing Committee, Risk Committee, and Compliance Committee. \\
+\bottomrule
+\end{tabularx}
+\caption{Fit and Proper Governance Statutory Mapping}
+\end{table}
+
+\clearpage
+
+% --- Section 6: Smart Contract Controls Mapping ---
+\section{HYPERION-20 Smart Contract Integration Mapping}
+Unlike legacy token structures, our compliance checks are embedded directly in the EVM state machine of our proprietary \textbf{HYPERION-20} standard (\texttt{contracts/Hyperion20.sol}). This section maps our code methods to target VARA mandates.
+\par\vspace{10pt}
+
+\begin{table}[h!]
+\centering
+\begin{tabularx}{\textwidth}{l p{5cm} X}
+\toprule
+\textbf{Smart Contract Method} & \textbf{VARA Regulatory Standard} & \textbf{Compliance Enforcement Function} \\
+\midrule
+\texttt{isWhitelisted(address)} & \textbf{VARA Compliance Rulebook} (Sanction screening \& compliance blocks) & Restricts standard transfers (\texttt{\_transfer}) strictly to investors pre-screened and approved by the CCO/MLRO. \\
+\midrule
+\texttt{tradingFeeBps} & \textbf{VARA Market Conduct} (Clear economic charges and sustainable monetization) & Automatically deducts up to 1.5\% on secondary AMM transfers, forwarding fees to the Hyperion Corporate Treasury. \\
+\midrule
+\texttt{triggerLiquidationFreeze()} & \textbf{VARA VA Issuance Rulebook} (Orderly redemptions \& investor protection) & Allows the Board to freeze transfers forever once a property exits. Tokens become un-transferable, permanent historical mementos. \\
+\midrule
+\texttt{redeemLiquidationPayout()} & \textbf{VARA VA Management Rules} (Fiduciary client distribution and payout pools) & Allows investors to claim their pro-rata share of liquidation USDC deposited in the contract by tracking their claim state in the \texttt{hasRedeemed} register. \\
+\bottomrule
+\end{tabularx}
+\caption{HYPERION-20 Smart Contract Compliance Mapping}
+\end{table}
+
+---
+
+% --- Section 7: Attestation & Seal ---
+\section{Fiduciary Attestation}
+We, the executive officers and board members of Hyperion Realty (Dubai VASP under incorporation), hereby attest that this Statutory Mapping is complete, accurate, and reflects the true operating mechanics of the HPR protocol. We confirm that all centralized asset management models, our custom **HYPERION-20** smart contract structures, and our compliance policies are fully aligned with the regulations of the Dubai Virtual Assets Regulatory Authority.
+
+\par\vspace{1.5cm}
+\noindent
+\begin{tabularx}{\textwidth}{X X}
+    \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+    \textbf{Money Laundering Reporting Officer (MLRO)} & \textbf{Date} \\
+    & \\
+    \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+    \textbf{Attested by Chief Compliance Officer} & \textbf{Date}
+\end{tabularx}
+
+\makehyperionseal
+
+\end{document}

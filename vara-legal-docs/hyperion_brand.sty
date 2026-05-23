@@ -1,0 +1,227 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{hyperion_brand}[2026/05/23 Hyperion Corporate Branding Style Sheet]
+
+% --- Core System Packages ---
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{geometry}
+\RequirePackage{xcolor}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{tcolorbox}
+\RequirePackage{hyperref}
+\RequirePackage{array}
+\RequirePackage{booktabs}
+\RequirePackage{tabularx}
+\RequirePackage{enumitem}
+\RequirePackage{microtype}
+\RequirePackage{charter}    % Premium Serif Font for Body Text
+\RequirePackage{helvet}     % Sans-Serif Font for Headers and Titles
+\RequirePackage{graphicx}   % Graphics Package for Logo and Medallion Integration
+\RequirePackage{lastpage}   % Required for exact "Page X of Y" dynamic counting
+
+% --- Margins and Geometry ---
+\geometry{
+    a4paper,
+    top=1.0in,
+    bottom=1.0in,
+    left=1.0in,
+    right=1.0in,
+    headheight=20pt,
+    headsep=0.25in,
+    footskip=0.4in
+}
+
+% --- Corporate Color Palette ---
+\definecolor{HyperionGold}{RGB}{212, 175, 55}       % #D4AF37 Imperial Gold
+\definecolor{HyperionCharcoal}{RGB}{26, 26, 26}      % #1A1A1A Charcoal Text/Bg
+\definecolor{HyperionBronze}{RGB}{181, 148, 59}     % #B5943B Muted Accent
+\definecolor{HyperionGray}{RGB}{110, 110, 110}       % #6E6E6E Neutral Subtext
+\definecolor{HyperionLightGray}{RGB}{248, 249, 250}  % #F8F9FA Section Fills
+
+% --- Headings and Section Styling ---
+\titleformat{\section}
+  {\normalfont\fontfamily{phv}\fontseries{b}\fontsize{15}{18}\selectfont\color{HyperionCharcoal}}
+  {\thesection}{1em}{}[\titleline{\color{HyperionGold}\titlerule[1.0pt]}]
+
+\titleformat{\subsection}
+  {\normalfont\fontfamily{phv}\fontseries{b}\fontsize{12}{15}\selectfont\color{HyperionCharcoal}}
+  {\thesubsection}{1em}{}
+
+\titleformat{\subsubsection}
+  {\normalfont\fontfamily{phv}\fontseries{m}\fontshape{it}\fontsize{10}{13}\selectfont\color{HyperionBronze}}
+  {\thesubsubsection}{1em}{}
+
+\titlespacing*{\section}{0pt}{1.8ex plus 0.8ex minus .2ex}{1.0ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{1.4ex plus 0.8ex minus .2ex}{0.6ex plus .2ex}
+
+% --- Headers & Footers (fancyhdr) ---
+\pagestyle{fancy}
+\fancyhf{} % Clear all defaults
+
+% Custom Header Line
+\renewcommand{\headrulewidth}{0.6pt}
+\renewcommand{\headrule}{{\color{HyperionGold}\hrule width\headwidth height\headrulewidth\vskip-\headrulewidth}}
+
+% Header Contents
+\lhead{\fontfamily{phv}\selectfont\fontsize{9}{11}\selectfont\textbf{\color{HyperionCharcoal}{HYPERION REALTY}} \quad | \quad \color{HyperionBronze}{VARA LICENSE APPLICATION}}
+\rhead{\fontfamily{phv}\selectfont\fontsize{9}{11}\selectfont\textbf{\color{HyperionGray}{CONFIDENTIAL // REGULATORY FILING}}}
+
+% Custom Footer Line
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\footrule}{{\color{HyperionLightGray}\hrule width\headwidth height\footrulewidth\vskip-\footrulewidth}}
+
+% Footer Contents
+\lfoot{\fontfamily{phv}\selectfont\fontsize{8}{10}\selectfont\color{HyperionGray}{SUBMITTED TO DUBAI VIRTUAL ASSETS REGULATORY AUTHORITY (VARA) \quad | \quad REV 1.1}}
+\rfoot{\fontfamily{phv}\selectfont\fontsize{9}{11}\selectfont\textbf{\color{HyperionCharcoal}{Page \thepage\ of \pageref{LastPage}}}}
+
+% Apply fancyhdr to plain page styles (e.g. table of contents pages)
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \lhead{\fontfamily{phv}\selectfont\fontsize{9}{11}\selectfont\textbf{\color{HyperionCharcoal}{HYPERION REALTY}} \quad | \quad \color{HyperionBronze}{VARA LICENSE APPLICATION}}
+  \rhead{\fontfamily{phv}\selectfont\fontsize{9}{11}\selectfont\textbf{\color{HyperionGray}{CONFIDENTIAL // REGULATORY FILING}}}
+  \lfoot{\fontfamily{phv}\selectfont\fontsize{8}{10}\selectfont\color{HyperionGray}{SUBMITTED TO DUBAI VIRTUAL ASSETS REGULATORY AUTHORITY (VARA) \quad | \quad REV 1.1}}
+  \rfoot{\fontfamily{phv}\selectfont\fontsize{9}{11}\selectfont\textbf{\color{HyperionCharcoal}{Page \thepage\ of \pageref{LastPage}}}}
+}
+
+% --- Hyperlink Formatting ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=HyperionCharcoal,
+    filecolor=HyperionBronze,      
+    urlcolor=HyperionBronze,
+    citecolor=HyperionBronze,
+    pdftitle={Hyperion Realty - VARA Dubai License Filings},
+    pdfauthor={Hyperion Trust Legal \& Compliance Division}
+}
+
+% --- Styled Callout Boxes ---
+% Regulatory Framework Highlights
+\newtcolorbox{regulatorybox}[1]{
+    colback=HyperionLightGray,
+    colframe=HyperionGold,
+    fonttitle=\fontfamily{phv}\selectfont\bfseries\color{white},
+    title=#1,
+    boxrule=1.5pt,
+    arc=3pt,
+    boxsep=6pt,
+    left=8pt,
+    right=8pt,
+    top=6pt,
+    bottom=6pt
+}
+
+% Critical Alerts or Warnings
+\newtcolorbox{alertbox}[1]{
+    colback=HyperionLightGray,
+    colframe=HyperionCharcoal,
+    fonttitle=\fontfamily{phv}\selectfont\bfseries\color{white},
+    title=#1,
+    boxrule=1.5pt,
+    arc=3pt,
+    boxsep=6pt,
+    left=8pt,
+    right=8pt,
+    top=6pt,
+    bottom=6pt
+}
+
+% --- List Spacing Adjustments ---
+\setlist[itemize]{topsep=3pt, itemsep=2pt, parsep=0pt}
+\setlist[enumerate]{topsep=3pt, itemsep=2pt, parsep=0pt}
+
+% --- Custom Reusable Institutional Cover Page ---
+\newcommand{\makehyperioncover}[3]{
+    \begin{titlepage}
+        \thispagestyle{empty}
+        \pagecolor{HyperionCharcoal}
+        
+        \begin{tcolorbox}[
+            colback=HyperionCharcoal,
+            colframe=HyperionGold,
+            boxrule=2.5pt,
+            arc=4pt,
+            height=0.98\textheight,
+            width=1.0\textwidth,
+            valign=center,
+            halign=center,
+            boxsep=20pt,
+            left=20pt,
+            right=20pt,
+            top=15pt,
+            bottom=15pt
+        ]
+            \begin{center}
+                \vspace*{0.01\textheight}
+                
+                % Company Logo (Light theme logo on Charcoal background)
+                \includegraphics[height=38pt]{HRLogoLight.png}
+                \par\vspace{8pt}
+                {\fontfamily{phv}\selectfont\fontsize{9}{11}\selectfont\color{HyperionGold}{SECURED TRUSTEESHIP \& REAL ESTATE TOKENIZATION}}
+                
+                \par\vspace{15pt}
+                \noindent\color{HyperionGold}\rule{0.6\textwidth}{1.0pt}\par\vspace{20pt}
+                
+                % Document Classification Label
+                {\fontfamily{phv}\selectfont\fontsize{10}{12}\selectfont\textbf{\color{HyperionGold}{OFFICIAL VARA REGULATORY FILING \& PROXY}}}
+                \par\vspace{15pt}
+                
+                % Document Title
+                {\fontfamily{phv}\selectfont\fontsize{24}{30}\selectfont\textbf{\color{white}{#1}}}
+                \par\vspace{15pt}
+                
+                % Document Subtitle
+                {\fontfamily{phv}\selectfont\fontsize{11}{15}\selectfont\color{HyperionLightGray}{#2}}
+                
+                \par\vspace{25pt}
+                
+                % Metadata Block (Luxury Dark Gray Semi-Transparent Box)
+                \begin{tcolorbox}[
+                    colback=black!60,
+                    colframe=HyperionGold,
+                    boxrule=0.8pt,
+                    arc=2pt,
+                    width=0.95\textwidth,
+                    boxsep=10pt
+                ]
+                    \fontfamily{phv}\selectfont\fontsize{9}{12}\selectfont
+                    \color{white}
+                    \begin{tabularx}{\textwidth}{lX}
+                        \textbf{\color{HyperionGold}{Target Authority:}} & Virtual Assets Regulatory Authority (VARA), Dubai, UAE \\
+                        \textbf{\color{HyperionGold}{Target Activity:}}  & Virtual Asset Management \& Investment Services License \\
+                        \textbf{\color{HyperionGold}{Filing Entity:}}     & Hyperion Realty Dubai VASP (Under Incorporation) \\
+                        \textbf{\color{HyperionGold}{Filing ID:}}         & VARA-VASP-APP-HYP-#3 \\
+                        \textbf{\color{HyperionGold}{Filing Date:}}       & May 22, 2026 \\
+                        \textbf{\color{HyperionGold}{Classification:}}   & \textbf{\color{red}{STRICTLY CONFIDENTIAL // PROPRIETARY}}
+                    \end{tabularx}
+                \end{tcolorbox}
+                
+                \vfill
+                
+                % Footer of Cover
+                {\fontfamily{phv}\selectfont\fontsize{8}{10}\selectfont\color{HyperionGray}{
+                    COPYRIGHT \copyright\ 2026 HYPERION REALTY. ALL RIGHTS RESERVED. \\
+                    This document is a confidential regulatory filing prepared solely for consideration by VARA. \\
+                    Unauthorized redistribution, citation, or duplication is strictly prohibited under UAE Federal Law.
+                }}
+                \vspace*{0.01\textheight}
+            \end{center}
+        \end{tcolorbox}
+        \clearpage
+    \end{titlepage}
+    \pagecolor{white} % Reset the page background color for the rest of the document
+}
+
+% --- Custom Reusable Institutional Medallion Seal ---
+\newcommand{\makehyperionseal}{
+    \begin{center}
+        \vspace{0.8cm}
+        \includegraphics[width=2.5cm]{hyperion_medallion.png}
+        \par\vspace{8pt}
+        {\fontfamily{phv}\selectfont\fontsize{9}{11}\selectfont\textbf{\color{HyperionCharcoal}{HYPERION REALTY DUBAI VASP}}}
+        \par
+        {\fontfamily{phv}\selectfont\fontsize{8}{10}\selectfont\color{HyperionBronze}{OFFICIAL SEAL OF CORPORATE FIDUCIARY TRUST}}
+    \end{center}
+}
+
+\endinput
